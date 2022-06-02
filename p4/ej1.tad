@@ -1,0 +1,87 @@
+Considere el TAD Multiconjunto(Nat).
+1. Diséñelo utilizando listas enlazadas de naturales. 
+Calcule el orden de complejidad (de peor caso) de las
+operaciones de inserción, borrado y cálculo de la cantidad de repeticiones de un elemento.
+
+
+representación:
+	mconjnat se representa con diccLL, donde
+		diccLL: lista(lista(nat))
+
+función de abstracción:
+	Abs: estr e → mconjnat { Rep(e) }
+	(∀e: estr) Abs(e) =obs m | 
+		#(n, m) =obs cantidad(n, m)
+		∧
+		vacio() =obs ∅()
+		∧
+		Ag(n, m) =obs Ag(n, m)
+
+
+invariante de representación:
+	Rep: estr → bool
+	(∀e: estr) Rep(e) ≡ true ⇔ 
+		(∀i: nat)(0 ≤ i < Longitud(l) ⟹L (Longitud(l[i])=2 ∧ Ultimo(l[i]) > 0))
+		∧
+		(∀i, j: nat)(0 ≤ i, j < Longitud(l) ∧ i ≠ j 
+			⟹L Primero(l[i]) ≠ Primero(l[j]))
+
+Interfaz
+
+    se explica con: Multiconjunto(Nat)
+
+    géneros: multiconjnat, mconjnat
+
+    operaciones:
+        cantidad(in n: nat, in m: mconjnat) → res: nat
+        Pre ≡ { true }
+        Post ≡ { res =obs #(n, m) }
+        Descripción: cantidad de apariciones de n en m
+        Complejidad: O(n)
+       
+        vacio() → res: mconjnat
+        Pre ≡ { true }
+        Post ≡ { res =obs ∅() }
+        Descripción: genera el mconjnat vacío
+        Complejidad: O(1)
+
+        Ag(in n:nat, in/out m: mconjnat)
+        Pre ≡ { m =obs m₀ }
+        Post ≡ { m =obs Ag(n, m₀)}
+        Descripción: agrega el numero n a m
+        Complejidad: O(n)
+
+    algoritmos:
+        iCantidad(in n: nat, in l: diccLL) → res: nat
+        it ← CrearIt(l)
+        res ← 0
+        mientras HaySiguiente(it) ∧ res = 0:
+        	tup ← Siguiente(it)
+        	si Primero(tup) = n
+        		res = Ultimo(tup)
+        	fin si
+        	Avanzar(it)
+        fin mientras
+
+     	iVacio() → res: diccLL
+     	res ← Vacía()
+
+     	iAg(in n: nat, in/out l: diccLL)
+		it ← CrearIt(l)
+        encontré ← false
+        mientras HaySiguiente(it) ∧ !encontré:
+        	tup ← Siguiente(it)
+			encontré ← Primero(tup) = n
+        	Avanzar(it)
+        fin mientras
+        cantidad ← Ultimo(Siguiente(it))
+        cantidad ← 1 + cantidad
+
+Fin Interfaz
+
+
+
+
+2. Piense en otras estructuras –más allá de las listas– y estime los órdenes de complejidad de peor caso que
+tendrı́an las operaciones mencionadas.
+

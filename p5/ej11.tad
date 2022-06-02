@@ -1,0 +1,30 @@
+A[1..n] arreglo de naturales en rango (cada elem esta en [1,k] con k una cte)
+
+ordenoEnRango(in/out A: arreglo(nat))
+	
+	k ← Max(A) //O(n) necesito ver todos los elementos y guardarme el mayor
+
+	A ← CountingSort(A, k) //O(n+k) con k cte = O(n)
+
+
+Hago el counting para no chorear tanto y de paso practicarlo
+
+CoutingSort(in/out A: arreglo(nat), k: nat)
+	//k es la cota
+	count ←	CrearArreglo(k+1) //O(k)
+	for i ← 0..tamaño(A)-1 :
+  		count[A[i]]++
+  	endfor //O(n)
+
+  	lista(nat) lRes ← Vacia()
+  	for c ← 0..k :
+  		while count[c] > 0:
+  			AgregarAtras(lRes, c)
+  			count[c]--
+  		endwhile
+  	endfor //O(k*n) = O(n) k cte
+
+  	A ← ListaAArreglo(lRes)
+
+
+  	

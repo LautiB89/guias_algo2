@@ -1,0 +1,32 @@
+Recibo un arreglo A de n numeros naturales y un nat k
+Devuelvo un arreglo B de n*k nats ordenado
+
+ordenarMultiplos(in A: arreglo(nat), in k: nat) → res: arreglo(nat)
+	n ← tamaño(A)
+	MergeSort(A) //O(nlogn)
+
+	B: arreglo(arreglo(nat)) ← CrearArreglo(k, CrearArreglo(n))
+	for i ← 1...k: //k iteraciones
+		for j ← 0...n: //n iteraciones
+			B[i-1][j] = A[j]*i 			
+		endfor //O(n)
+	endfor //O(k⋅n)
+
+	res ← MergeArreglos(B)//O(k⋅n)
+
+El total es O(kn + nlogn) y como kn ≤ knlogn y nlogn ≤ knlogn
+	entonces es tambien O(kn logn)
+
+MergeArreglos(in A arreglo(arreglo(nat))) → res: arreglo(nat)
+//Recibe muchos arreglos del mismo tamaño y los mergea a todos entre si
+// retornando en res
+	if tamaño(A)=1 then //O(1)
+		A
+	else if tamaño(A) = 2 then //O(2n) = O(n)
+		Merge(A[0], A[1])
+	else if tamaño(A) % 2 = 1 then //O(kn) + llamado recursivo
+		B ← A sin el ultimo elemento
+		Merge(MergeArreglos(B), A.ultimo) //O(n(k-1) + nk) = O(kn)
+	else //O(nk/2 + nk/2) = O(nk)
+		Merge(MergeArreglos(primeraMitad_A), MergeArreglos(segundaMitad_A))	
+	endif

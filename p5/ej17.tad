@@ -1,0 +1,28 @@
+A[1..n] ordenar en O(n)
+
+∀i, hay a lo sumo i elementos mas chicos que A[i]
+idem
+(∀i: nat)(1≤i≤n ⟹L cantidad(e en A: e < A[i]) ≤ i)
+
+ Hay como mucho 1 elemento menor que q
+ Hay como mucho 2 elementos menores que w
+ ...
+ Hay como maximo n elementos menores que ult(A)
+
+Observación:
+El maximo de un arreglo (tamaño n) de elementos todos distintos es siempre mayor
+a todos los demas elementos, o sea a n-1 elementos
+Los unicos dos A[i] con un i tq A[i] puede ser mayor a n-1 elementos son los ultimos dos.
+i va desde 1 hasta n, y por definicion A[i] a lo sumo es mayor a i elementos
+Si i=n, entonces A[i] puede ser mayor a n-1 elementos
+Si i=n-1, entonces A[i] puede ser mayor a n-1 elementos (como maximo)
+
+Solución:
+Voy recorriendo desde atras al array y si no están ordenados los swapeo. 
+
+ordenar(in/out A: arreglo(nat))
+    for i ← tamaño(A)-1...1:
+        if A[i] < A[i-1] then
+            swap(A[i], A[i-1])
+        fi
+    endfor

@@ -1,0 +1,16 @@
+ordenarAVL(in/out A: arreglo(nat))
+	ab: AVL⟨nat, nat⟩= CrearArbolAVL()
+	para i = 0..tamaño(A):
+		si pertenece(A[i], ab):
+			actualizo la cantidad en la tupla O(log n)
+		sino
+			inserto la tupla ordenando segun primer valor O(log n)
+		fin si
+	fin para //hago n iteraciones ⟹ O(n*log n) 
+
+	A ← Inorder(ab) //O(n)
+
+
+
+	
+

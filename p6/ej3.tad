@@ -1,0 +1,34 @@
+Calcular aᵇ en tiempo logaritmico en b → O(log b)
+Piense como reutilizar los resultados ya calculados
+
+aᵇ = a*a*...*a (b veces)
+   = a^(b/2) * a^(b/2) * a^(b mod 2) = ...
+
+elevar(in a: nat, in b: nat) → res: nat
+
+if a = 0 then
+	0
+else
+	m ← b mod 2
+	if b > 0 then
+		e ← elevar(a, b/2)
+		res ← e * e * m
+	else:
+		res ← 1
+	fi
+fi
+
+T(n) = T(n/2) + cte = T(n/4) + 2*cte = ... = T(n/2ᵏ) + k*cte
+Si quiero hacer esta recursion hasta que: n/2ᵏ = 1 ⟺ n=2ᵏ ⟺ log₂n = k
+T(n) = T(1) + log₂n*cte = 1 + log₂n*cte ∈ O(log n)
+Donde n = b
+
+elevarIT(in a: nat, in b: nat) → res: nat
+//Supongo a≠0
+m ← b mod 2
+res ← 1
+while pot < b:
+	res ← res*res
+	pot ← pot * 2
+end while
+res ← res * (aᵐ) //m es 0 o 1 y se hace facil

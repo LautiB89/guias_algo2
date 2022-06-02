@@ -1,0 +1,28 @@
+Sea A un arreglo de n elementos distintos (positivos o negativos)
+ordenados de manera estrictamente creciente
+
+Cuando veo un indice i:
+- Si el elemento aᵢ es igual → ya encontré
+- Si el elemento aᵢ es menor a i → no voy a encontrarlo en los j ≤ i
+- Si el elemento aᵢ es mayor a i → podria estar atras de i el j q buscamos
+
+existe_aᵢ?(in A: arreglo(nat)) → res: bool
+	n ← tamaño(A) 
+
+ 	if n = 1 then
+ 		res ← (A[0] = 1)
+ 	else
+ 		desde ← 0
+ 		hasta ← n-1
+ 		while desde < hasta-1:
+	 		medio ← (desde+hasta+1)/2
+	 		if A[m] = medio+1 then
+	 			res ← true
+	 		else if A[m] < medio+1 then
+				desde ← medio
+			else
+				hasta ← medio
+			fi
+		end while
+		res ← A[desde] = desde+1 ∨ A[hasta] = hasta+1
+	fi

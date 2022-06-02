@@ -1,0 +1,30 @@
+
+casiSort: 
+Dado un arreglo A[1...n] de n elementos, 
+ordena n/2 elementos arbitrarios poniendolos a la mitad izq del arreglo A[1...n/2]. 
+Los elementos no ordenados de A se colocan en la mitad derecha A[n/2+1...n].
+
+ordenar(in/out A: arreglo(nat))
+	n ← tamaño(A)
+
+	A ← casiSort(A) //Me deja hasta n/2 ordenado
+
+	B ← CrearArreglo(n) //O(n)
+
+	for i = 0...n/2-1: // n/2 iteraciones
+		B[i] = A[i+n/2]
+	endfor //O(n)
+
+	B ← casiSort(B) //O(n)
+
+	for i = n/2...n-1: //n/2 iteraciones 
+			A[i-n/2] = B[i]
+	endfor //O(n)
+
+2.
+Queda O(n) suponiendo que casiSort toma θ(n)
+
+3.
+Haciendo las suposiciones que hace casiSort, no debería existir un algoritmo
+con esa complejidad, ya que se demostró que todos los sorts son Ω(nlogn)
+

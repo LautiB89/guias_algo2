@@ -1,0 +1,43 @@
+## Ejercicio 2
+Imagine secuencias de naturales de la forma s = Concatenar (s' , s'' ), donde s' es una secuencia ordenada de
+naturales y s'' es una secuencia de naturales elegidos al azar. ¿Qué método utilizarı́a para ordenar s? Justificar.
+(Entiéndase que s' se encuentra ordenada de la manera deseada.)
+
+Tenemos una secuencia s' = [a1, a2, ..., an] donde a1 ≤ a2 ≤ ... ≤ an
+Tenemos una secuencia s'' = [b1, b2, ..., bn] no ordenada
+
+Si las concatenamos vamos a tener s = [a1, a2, ..., an, b1, ..., bn] donde
+	Para los a se cumple a1 ≤ a2 ≤ ... ≤ an, y para los b no.
+La idea es ir "arrastrando" a cada bi a su lugar correspondiente haciento un insertion.
+Empezamos desde el indice correspondiente a la longitud de s' (donde empieza a haber elementos de s'').
+Y vamos swapeando al elemento bᵢ hacia atras parando cuando este sea menor o igual a su anterior.
+Una vez acomodados todos, la lista está ordenada.
+
+## Ejercicio 3
+SI ordeno el arreglo me cuesta O(n log n) ordenarlo y luego elegir los primeros k elementos es O(k)
+⟹ la complejidad sería O(k + n log n), como k≤n queda O(n log n)
+
+[1,4,5,6,7,2,3,4]
+
+Una solucion es recorrer k veces el arreglo, 
+agregando al menor elemento que no hayamos agregado hasta ahora
+
+kMasChicos(in a: arreglo(nat), in k: nat) → res: arreglo(nat)
+res = CrearArreglo(k)
+ultimoMin = -1
+para i en [0, k): //k iteraciones
+	min = -1 //Supongo que tiene al menos uno
+	para i en [0, tamaño(a) ): // n iteraciones
+		if ultimoMin < a[i] and (min = -1 or a[i] ≤ min) then
+			min = a[i]
+		fi
+	fin para
+	ultimoMin = min
+fin para
+
+O(k*n) con k=n en el peor caso queda O(n²)
+
+## Ejercicio 4
+
+Un merge de todas???
+

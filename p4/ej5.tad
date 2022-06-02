@@ -1,0 +1,20 @@
+Usaría listas enlazadas ordenadas,
+donde cada elemento de mi lista tiene un valor que indica que fila es y un puntero 
+a una lista de elementos que representa los elementos en esa fila
+
+representación:
+	matfin se representa con ll, donde
+		ll es lista⟨fila: nat, elems: lista⟨col: nat, valor: α⟩⟩
+		
+Definir requeriría encontrar primero la fila, si no está definida busco si inmediato anterior e
+inserto una tupla con el numero de fila correspondiente y un elems con e elemento definido (su columna y valor)
+
+una lista enlazada de tuplas que indican (fila, columna) ordenadas segun fila primero y luego por columna
+Definir en el peor caso requiere recorrer todos los elementos que estan definidos θ(n)
+Obtener en el peor caso requiere recorrer la lista hasta el final, ya sea por que el elemento no está definido (devuelvo 0)
+o bien por que el elemento es el ultimo.
+
+Sumar dos matrices va a requerir "mergearlas" avanzando el elemento que vemos de cada matriz de a uno
+Cuando los elementos que estamos viendo en cada matriz tienen misma coordenada, nuestra matriz resultado tiene la Suma
+
+

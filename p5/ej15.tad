@@ -1,0 +1,12 @@
+####SIN COMPLETAR###############################
+
+Un cjto de nats tiene un agujero si existe un natural x tq:
+	x ∉ el conjunto y
+	el cjto tiene algun elto mayor y alguno menor que x
+
+
+
+tieneAgujero?(in A: arreglo(nat)) → bool
+//Por la consigna parece que tamaño(A) ≥ 2
+	n ← tamaño(A)
+ 

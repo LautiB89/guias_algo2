@@ -1,0 +1,35 @@
+Ejercicio 4
+El TAD Matriz infinita de booleanos tiene las siguientes operaciones:
+Crear, que crea una matriz donde todos los valores son falsos.
+Asignar, que toma una matriz, dos naturales (fila y columna) y un booleano, y asigna a este último en
+esa coordenada. (Como la matriz es infinita, no hay restricciones sobre la magnitud de fila y columna.)
+Ver, que dadas una matriz, una fila y una columna devuelve el valor de esa coordenada. (Idem.)
+Complementar, que invierte todos los valores de la matriz.
+Intersecar, que toma dos matrices y realiza la conjunción coordenada a coordenada.
+
+Diseñe este TAD de modo que las operaciones Crear, Ver y Complementar tomen O(1) tiempo en peor
+caso.
+
+Crear Ver Complementar O(1)
+Asignar Intersecar O(cualq)
+
+representación:
+	matinf se representa con estr, donde
+		estr es tupla⟨
+			inv: bool,
+			m: arreglo(arreglo(bool))
+		⟩
+		
+Cuando hago Crear, el arreglo se inicia vacio. O(1)
+Cuando hago ver puede haber dos opciones:
+	Si la posicion es "evaluable" dentro de la matriz, devuelve ese valor O(1) acceder a un array
+	Sino devuelve 1 si esta invertida y 0 si no lo está. O(1)
+Cuando hago complementar invierto el valor de inv (indicador de si esta invertida o no)
+Cuando ejecuto asignar tengo que tomar en cuenta que la matriz puede estar invertida
+	Si está invertida, asigno el valor invertido en la posicion correspondiente
+	Si no está invertida, asigno el valor recibido
+	Además hay que considerar que puedo querer asignar un valor que no es accesible usando la indexacion del array
+	En este caso tengo que considerar si lo que quiero asignar tiene el mismo valor que los infinitos valores
+	o si es diferente, en este ultimo caso agrando las dimensiones del array si es necesario y lo asigno
+Para intersecar hago cualquier algoritmo choto que se me ocurra total no me molesta la complejidad,
+	que sea (nⁿ!) jk

@@ -1,0 +1,23 @@
+Recibo un arreglo A con n enteros positivos donde
+	a lo sumo ⌊√n⌋ valores estan fuera del rango [20,40]
+Ordenarlo en O(n) y justificar la Complejidad
+
+ordenar(in/out A: arreglo(nat))
+	n ← tamaño(A)
+	C_ll ← listaVacia()
+	B_ll ← listaVacia()
+	for i ← 0...n-1:
+		if 20 ≤ A[i] ≤ 40 then
+			AgregarAtras(C, A[i])
+		else
+			AgregarAtras(F, A[i])
+		endif
+	endfor
+
+	C ← ListaArreglo(C_ll) //O(n)
+	B ← ListaArreglo(B_ll) //O(√n)
+	CountingSort(C) //O(n)
+	MergeSort(B) //O(√n log(√n)), notar que pertenece a O(n) ya que 
+		// log √n < √n entonces √n log√n ≤ √n √n = n
+
+	A ← Merge(C, B) //O(n)

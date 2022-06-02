@@ -1,0 +1,58 @@
+representación:
+	alumno es tupla⟨nombre: string, genero: GEN, puntaje: Nota⟩
+	donde GEN es enum{masc, fem} y
+		  Nota es un nat no mayor que 10
+
+
+ordenaPlanilla(in/out p: planilla)
+	
+	pMasc, pFem ← SepararPorGenero(p) // O(n)
+
+	pMasc ← CountingSort(pMasc, 10) //O(n+10) = O(n)
+
+	pFem ← CountingSort(pFem, 10) //O(n+10) = O(n)
+	
+	p ← Concatenar(pFem, pMasc)
+
+SepararPorGenero(in p: planilla) → tupla(pMasc: planilla, pFem: planilla)
+	cuento cuantas fem, masc hay
+	pMasc ← CrearArreglo(#masc)
+	pFem ← CrearArreglo(#fem)
+	nat iMasc ← 0, iFem ← 0
+	for i ← 0..tamaño(p)-1:
+		if p[i].GEN = Fem:
+			pFem[iFem] ← p[i]
+		else
+			pMasc[iMasc] ← p[i]
+		endif
+	endfor
+
+2. Suponer que GEN es un tipo enumerado pero con una cantidad ACOTADA 
+ (el orden se da por el orden de enum)
+
+ordenaPlanilla(in/out p: planilla)
+	
+	arreglo(lista(alumnos)) A ← SepararPorGenero(p) // O(n)
+
+	for i ← 0..tamaño(A)-1: //#GEN iteraciones (acotada)
+		A ←	CountingSort(A, 10) //O(n) en el peor caso (solo para una?)
+	endfor //O(k*n) con k cte → O(n)
+
+	ConcatenarTodas(A) //O(#GEN) = O(1)
+
+	p ← ListaAArreglo(A) //O(n)
+
+
+SepararPorGenero(in p: planilla) → res: arreglo(lista(alumnos))
+	
+	res ← CrearArreglo(cant de GEN)
+	//Gen tiene un numero por cada genero, agrego a la persona con
+	//genero i en el arreglo i (supongo que gen va de 0 a #gen-1)
+	for i ← 0..tamaño(p)-1: //n iteraciones
+		AgregarAtras(res[p[i].GEN], p) //acceso y agregar en O(1)
+	endfor // O(n)
+
+
+
+3. No contradice nada, tenemos mas supuestos que no estan considerados en la cota Ω(n logn)
+ //Que las cantidades estan acotadas

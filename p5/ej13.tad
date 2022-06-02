@@ -1,0 +1,35 @@
+####SIN COMPLETAR###############################
+Quiero ordenar en O(nl) donde l es la longitud maxima de c/u
+La comparacion de dos strings[l] toma O(l).
+
+Hago un diccTrie vacio que va a guardar <string, lista(nat)>
+Inserto todas las tuplas del arreglo:
+	n elementos → insercion cuesta n*O(l) = O(nl)
+
+Ordeno las tuplas en funcion del numero: O(nlogn)
+Inserto cada numero en una lista (significado) dentro de un diccTrie con strings
+como clave → O(n*l)
+Como el arreglo estaba ordenado, los nats dentro de cada lista correspondiente a un string
+tambien fueron insertados ordenados.
+Ahora recorro el trie en orden y voy linkeando cada lista a mi lista resultado
+
+ordenar(in A: arreglo())
+	MergeSort(A) //Usa el primer elemento para comparar
+		//O(n logn)
+
+	D: diccTrie(string, lista(tupla(string, nat))) ← Vacio() //O(1)
+
+	for elem in A: //n iteraciones
+		if def?(elem, D) then //O(l)
+			AgregarAtras(D[elem.c₂], elem) //O(l)
+		else
+			definir(elem.c₂, lista(elem), D) //O(l)
+		endif
+	endfor //O(nl)
+
+	Si pudiese hacer un inorder sería un golazo
+	Solo quedaría recorrer toda la lista y linkear todo
+
+
+
+

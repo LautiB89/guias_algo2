@@ -1,0 +1,38 @@
+Ejercicio 2
+Escriba algoritmos para las operaciones ∩ y ∪, considerando las siguientes representaciones para conjuntos:
+1. Sobre listas enlazadas (ordenadas y no ordenadas).
+
+
+Llamo n = copy(a) y m = copy(b)	
+Respuesta rápida:
+Intersección
+	para el ordenado es hacer un ciclo que compara los elementos
+	si hay dos iguales los inserta al nuevo conj y segun el orden de los elementos
+	avanza el iterador de A o B. La complejidad sería O(n+m)
+
+	para el no ordenado hay que revisar por cada elemento de A si está en B.
+	La complejidad sería O(n*m)
+
+	Podemos hacer algo mejor de unir ambas (O(1)), luego ordenarlas en O((n+m)*log(n+m)) y
+	compactarlas en O(n+m)
+
+	Pero aun mejor! 
+	- ListasAArreglos: O(n) + O(m)
+	- Las ordenamos: O(max{n⋅log n, m⋅log m})
+	- Las Mergeamos: O(n + m)
+	Queda O(max{n⋅log n, m⋅log m})
+
+
+Union
+	Todo lo que escribi en la interseccion es analogo acá
+	
+	puedo hacer un merge (caso ordenado) O(copy(a)+copy(b))
+	o incluso enlazar el fin de la primera lista con el comienzo de la segunda
+
+2. Sobre árboles binarios de búsqueda.
+
+Intersección:
+
+
+3. Sobre heaps.
+En cada inciso, calcule los órdenes de complejidad de peor caso de las operaciones.

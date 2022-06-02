@@ -1,0 +1,70 @@
+A[1..n] tiene n' secuencias de numeros repetidos continuos
+	n' << n 
+B[1..m]
+Obtener un arreglo C de tamaño n+m que contenga los elementos de A y B ordenados.
+
+1. Que tenga complejidad O(n + (n'+m)log(n'+m)) en el peor caso
+ordenar(in A, B: arreglo(nat)) -> C: arreglo(nat)
+	A' ← Compactar(A) //Ahora A para a tener a todos los mismos elementos pero una vez c/u
+					 // O(n)
+
+	//Quiero ordenar una lista que tiene los elementos de A (n') y los de B(m)
+	C' ← MergeATuplas(A', B) //Agarra las tuplas de A y convierte las de B a tuplas con cada elemento
+							// de B acompañado de un 1: ⟨elemento, 1⟩
+							// Cuesta O(n'+m)
+	//Podria concatenar a B convertido en tuplas y listo
+
+	C' ← MergeSort(C') //Lo hace usando como key: primer valor
+					  //O( (n'+m) log(n'+m) )
+
+	C ← Descompactar(C') // O(n'+m)
+
+¿Otra version?
+
+ordenar(in A, B: arreglo(nat)) -> C: arreglo(nat)
+	A_comp ← Compactar(A) //Ahora A para a tener a todos los mismos elementos pero una vez c/u
+					 // O(n)
+
+	B ← MergeSort(B) // O(m log(m))
+	B_comp ← Compactar(B) //O(m') donde m' = cant de elementos unicos de B (m' ≤ m)
+						  //En el peor caso m' = m ⟹ O(m)
+	
+	C_comp ← MergeCompact(A_comp, B_comp)
+		//Si dos elementos son iguales suma sus cantidades en vez de insertar ambos
+		//Pero en el peor caso A ∩ B = ∅
+		// O(n' + m)
+
+	C ← Descompactar(C_comp) //O(n'+m)
+
+Complejidad total = O(n + mlogm + (n'+m))
+
+2. Suponiendo que B ⊂ A, que tenga complejidad O(n + n'(log(n')+m)) en el peor caso
+   y que solo use arreglos como estructuras auxiliares
+
+
+ordenar(in A, B: arreglo(nat)) -> C: arreglo(nat)
+	//Pre: B ⊂ A
+
+	A_comp ← Compactar(A) //Ahora A para a tener a todos los mismos elementos pero una vez c/u
+					 // O(n)
+
+	A_comp ← MergeSort(A_comp) //O(n'log(n'))
+
+	nat i ← 0
+	para i < tamaño(A_comp): //n' iteraciones
+		nat j ← 0
+		para j < tamaño(B): //m iteraciones
+			si B[j] = A_comp[i][0]:
+				A_comp[i][1]++
+			fin si
+			j++
+		fin para
+		i++
+	fin para
+	//Total: O(n'*m)
+
+	A ← Descompactar(A_comp) //O(n'+m)
+
+	//Total de todo el programa
+	// O(n + n'log(n') + n'm) (n'+m no lo cuento xq es menor que n'm)
+	// = O(n + n'(log(n') + m))

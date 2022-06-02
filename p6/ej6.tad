@@ -1,0 +1,21 @@
+Dado un árbol binario cualquiera, diseñar un algoritmo de dividir y conquistar 
+que devuelva la máxima distancia entre dos nodos (es decir, máxima cantidad de ejes a atravesar). 
+El algoritmo no debe hacer recorridos innecesarios sobre el árbol.
+
+Primera versión (con recorridos innecesarios)
+maxDist(in A: abb(nat)) → res: nat
+	res ← max{altura(A.izq)+altura(A.der)+2, maxDist(A.izq), maxDist(A.der)}
+	return res
+
+Segunda versión (corrigiendo recorridos innecesarios)
+maxDist(in A: abb(nat)) → res: nat
+	res ← maxDistAux(A).dist
+	return res
+
+	
+maxDistAux(in A:abb(nat)) → res: tupla(dist: nat, altura:nat)
+	if esHoja(A) then return ⟨0, 0⟩
+	else
+		resIzq ← maxDistAux(A.izq)
+		resDer ← maxDistAux(A.der)
+		res.dist ← max{}
