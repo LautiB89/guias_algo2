@@ -7,9 +7,6 @@ Ordenar en O(nlogm) solo usando arreglos y variables ordinarias
 a)
 No puedo crear un arreglo de tamaño m
 
-[1,2,4,3,2,6]
-
-
 
 
 raroSort(in A: arreglo(nat))

@@ -1,0 +1,42 @@
+cant de parejas en desorden de un arreglo A[0...n-1]
+son los pares i,j con 0≤i<j<n tq A[i]>A[j]
+Contarlas con tiempo estrictamente mejor que O(n²)
+
+Idea:
+Vamos a modificar el algoritmo de mergesort, especialmente en el que se mergean las listas.
+Recibimos dos listas, cada vez que insertamos el elemento de la lista "izquierda" 
+no cambiamos nuestro res (el contador de parejas etc) pero cuando insertamos un elemento
+de la lista "derecha", le sumamos la longitud de la izquierda a res (el mismo contador)
+
+parejas(in/out A: arreglo(nat)) → res: nat
+	nat n ← tam(A)
+	res ← 0
+	if tam(A) > 1 then
+		nat m ← n/2
+		arreglo(nat) B ← Copiar(Subarreglo(A, 0, m-1)),
+					 C ← Copiar(Subarreglo(A, m, n-1))
+		
+		res ← res + parejas(B) //Ordenan los arreglos por referencia
+		res ← res + parejas(C) //y cuentan el res del subproblema
+		MergeMagico(A,B,C) 
+	fi
+	return res
+//Lo copie del apunte de algoritmos de sorting :D
+//y modifique para que funcione para esto.
+
+MergeMagico(out A: arreglo(nat), in B,C: arreglo(nat)) → res: nat
+	nat iB ← 0, iC ← 0, res ← 0 
+	A ← CrearArreglo(tam(B)+tam(C))
+	for iA ← 0 to tam(A)-1 do
+		if iB < tam(B) ∧ (iC ≥ tam(C) ∨ B[iB] ≤ C[iC]) then
+			A[iA] ← B[iB]
+			iB ← iB+1
+        else
+			A[iA] ← C[iC]
+			iC ← iC+1
+			res ← res + (tam(B)-iB) //Deberia ser la cantidad restante de elementos por checkear en B
+		fi
+	end for
+	return res
+
+Es el mismo algoritmo que merge sort, O(nlogn)

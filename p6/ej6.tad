@@ -18,4 +18,5 @@ maxDistAux(in A:abb(nat)) → res: tupla(dist: nat, altura:nat)
 	else
 		resIzq ← maxDistAux(A.izq)
 		resDer ← maxDistAux(A.der)
-		res.dist ← max{}
+		res.dist ← max{resIzq.dist, resDer.dist, resIzq.altura + resDer.altura + 2}
+		res.altura ← max{resIzq.altura, resDer.altura} + 1

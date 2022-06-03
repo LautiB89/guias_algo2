@@ -12,10 +12,8 @@ ordenarMultiplos(in A: arreglo(nat), in k: nat) → res: arreglo(nat)
 		endfor //O(n)
 	endfor //O(k⋅n)
 
-	res ← MergeArreglos(B)//O(k⋅n)
+	res ← MergeArreglos(B)//O(kn logn)
 
-El total es O(kn + nlogn) y como kn ≤ knlogn y nlogn ≤ knlogn
-	entonces es tambien O(kn logn)
 
 MergeArreglos(in A arreglo(arreglo(nat))) → res: arreglo(nat)
 //Recibe muchos arreglos del mismo tamaño y los mergea a todos entre si
@@ -24,9 +22,9 @@ MergeArreglos(in A arreglo(arreglo(nat))) → res: arreglo(nat)
 		A
 	else if tamaño(A) = 2 then //O(2n) = O(n)
 		Merge(A[0], A[1])
-	else if tamaño(A) % 2 = 1 then //O(kn) + llamado recursivo
+	else if tamaño(A) % 2 = 1 then //O(kn) + llamado recursivo: O(nklogn)
 		B ← A sin el ultimo elemento
 		Merge(MergeArreglos(B), A.ultimo) //O(n(k-1) + nk) = O(kn)
-	else //O(nk/2 + nk/2) = O(nk)
+	else //O(nk + T(n/2)) donde T(n)=nk + 2T(n/2) → O(nklogn)
 		Merge(MergeArreglos(primeraMitad_A), MergeArreglos(segundaMitad_A))	
 	endif
