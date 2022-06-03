@@ -1,0 +1,55 @@
+Tenemos una matriz A de booleanos de n x n
+y una funcion conjuncionSubmatriz(i0, i1, j0, j1)
+que calcula la conjuncion (∧) de todos los elementos con indice
+i,j tq i0≤i≤i1, j0≤j≤j1
+i son las filas, j son las columnas
+				j0 j1 j2
+			i0  x  x  x
+			i1  x  x  x
+			i2  x  x  x
+
+1.
+//Llamo conjSubmat a la funcion xq es demasiado largo
+posFalse(in A: arreglo(arreglo(nat))) → res: tupla(i: nat, j: nat)
+	//Primero busco la posicion i de alguno de los false
+	nat lo ← 0,	hi ← tam(A)-1
+	while (lo < hi):
+		nat mi ← (lo+hi)/2
+		if ¬conjSubmat(lo, mi, 0, tam(A[0])-1) then
+			hi ← mi
+		else
+			lo ← mi
+		fi
+	end while
+
+	res.i ← lo
+
+	//Busco la posicion j de alguno de los false
+	nat lo ← 0,	hi ← tam(A[0])-1
+	while (lo < hi):
+		nat mi ← (lo+hi)/2
+		if ¬conjSubmat(i, i, lo, hi) then
+			hi ← mi
+		else
+			lo ← mi
+		fi
+	end while
+
+	res.j ← lo
+	return res
+
+2.
+contarFalse(in A: matriz(nat)) → res: nat
+	res ← 0
+	for k ← 1 to 5: //Itero 5 veces
+		if ¬conjSubmat(0, tam(A)-1, 0, tam(A[0])-1) then //Si hay al menos un false //O(1)
+			tupla(i: nat, j: nat): pos ← posFalse(A) //O(n) con n la cantidad de elementos de la matriz
+			res ← res + 1 //O(1)
+			A[posᵢ][posⱼ] = true //O(1)
+		fi
+	endfor
+
+3.
+El algoritmo quedó con complejidad de peor caso O(5n) = O(n)
+ 
+

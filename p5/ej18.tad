@@ -1,0 +1,8 @@
+1.
+CountingSort tiene complejidad O(n+k) donde k es el maximo de nuestros elementos
+Si el maximo es n (este caso especifico), la Complejidad queda O(n+n) = O(2n) = O(n)
+
+2.
+ordenar(in/out A: arreglo(nat)) → 
+	M ← Max(A) //O(n)
+	

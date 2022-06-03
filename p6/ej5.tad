@@ -7,4 +7,4 @@ A¹ + A² + A⁴ + A⁸ . . . + Aⁿ .
 Calcule el número de veces que el algoritmo propuesto aplica el método potencia. 
 Si no es estrictamente menor que O(n), resuelva el ejercicio nuevamente.
 
-
+∑Aⁱ	= 
