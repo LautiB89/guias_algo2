@@ -10,4 +10,3 @@ Un cjto de nats tiene un agujero si existe un natural x tq:
 tieneAgujero?(in A: arreglo(nat)) → bool
 //Por la consigna parece que tamaño(A) ≥ 2
 	n ← tamaño(A)
- 
