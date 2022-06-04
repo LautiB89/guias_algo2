@@ -10,7 +10,19 @@ ordenarAVL(in/out A: arreglo(nat))
 
 	fin para //hago n iteraciones ⟹ O(n*log d) 
 	
-	d = #Claves(ab)
-	d veces
-		minimo de claves //O(log d)
-		borrar minimo //O(log d)
+
+	//Hago un Inorder medio casero
+	lista(tupla(elem: nat, reps: nat)) 
+		B ← CrearLista() //O(1)
+
+	d = Claves(ab) //conjunto avl O(d)
+	while ¬∅?(d):
+		m ← Min(d) //O(logd)
+		AgregarAtras(B, ⟨m, obtener(m, ab)) //O(1) + O(logd) = O(logd)
+		borrar(m, ab) //O(log d)
+	end while
+
+	A' ← ListaAArreglo(B) //O(d)
+	A ← Descompactar(A') //O(n)
+
+Complejidad final: O(n * log(d))

@@ -1,4 +1,4 @@
-Quiero ordenar en O(nl) donde l es la longitud maxima de c/u
+Quiero ordenar en O(nl + nlogn) donde l es la longitud maxima de c/u
 La comparacion de dos strings[l] toma O(l).
 
 Hago un diccTrie vacio que va a guardar <string, lista(tupla(string, nat))>
@@ -26,12 +26,14 @@ ordenar(in A: arreglo())
 		endif
 	endfor //O(nl)
 
-	repito hasta tener un trie vacio:
-		agarro el minimo del trie //O(l)
-		lo concateno con mi lista resultado //O(1)
-		borro el elemento minimo //O(l)
-		asi hasta tener el trie vacio
+	R ← ListaVacia() //O(1)
+	while #Claves(D) > 0: //O(l) #(strings unicos) iteraciones
+		m ← Min(Claves(D)) //O(l)
+		R ← R && obtener(m, D) //O(1) + O(l) = O(l)
+		borrar(m, D) //O(l)
+	end while //O(#(strings unicos) * l) ∈ O(nl) ya que #strings_unicos ≤ n
 
+Complejidad final: O(nlogn + nl)
 2.
 Hago el counting en vez del merge, O(nl + n) = O(nl)
 

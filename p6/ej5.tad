@@ -11,4 +11,11 @@ Si no es estrictamente menor que O(n), resuelva el ejercicio nuevamente.
 A + A² + A³ + //O(n)
 A + A * (A + A²+ A³ + ... + A^{n-1})
 
-O(1)
+sumaPots(in A: matriz(nat), in n: nat) → R: matriz(nat)
+	if n = 1 then
+		return A
+	else
+		R ← A + A * sumaPots(A, n-1)
+		return R
+
+Nunca hacemos una potencia, #veces que aplicamos el metodo potencia es O(1)

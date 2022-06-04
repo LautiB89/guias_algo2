@@ -2,11 +2,6 @@ Un arreglo con tamaño potencia de 2 es mas a la izquierda si:
 - La suma de los elementos de la mitad izquierda superan los de la mitad derecha.
 - Cada una de las mitades es a su vez “mas a la izquierda”.
 
-Ejemplo: [8,6,7,4,5,1,3,2] es mas izq
-8+6+7+4 > 5+1+3+2 &&
-8+6 > 7+4 && 5+1 > 3+2 &&
-8 > 6 && 7 > 4 && 5 > 1 && 3 > 2
-
 esMasIzq(in A: arreglo(nat)) → res: bool
 	
 	res ← esMasIzqAux(A, 0, tamaño(A)-1).masIzq

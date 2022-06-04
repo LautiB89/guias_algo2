@@ -8,7 +8,6 @@ a)
 No puedo crear un arreglo de tamaño m
 
 
-
 raroSort(in A: arreglo(nat))
 	M ← Max(A) //O(n)
 

@@ -22,14 +22,3 @@ T(n) = T(n/2) + cte = T(n/4) + 2*cte = ... = T(n/2ᵏ) + k*cte
 Si quiero hacer esta recursion hasta que: n/2ᵏ = 1 ⟺ n=2ᵏ ⟺ log₂n = k
 T(n) = T(1) + log₂n*cte = 1 + log₂n*cte ∈ O(log n)
 Donde n = b
-
-elevarIT(in a: nat, in b: nat) → res: nat
-//Supongo a≠0
-m ← b mod 2
-res ← 1
-pot ← 1
-while pot < b: //probar que hace logn iteraciones
-	res ← res*res
-	pot ← pot * 2
-end while
-res ← res * (aᵐ) //m es 0 o 1 y se hace facil
