@@ -18,7 +18,7 @@ parejas(in/out A: arreglo(nat)) → res: nat
 		
 		res ← res + parejas(B) //Ordenan los arreglos por referencia
 		res ← res + parejas(C) //y cuentan el res del subproblema
-		MergeMagico(A,B,C) 
+		res ← res + MergeMagico(A,B,C) 
 	fi
 	return res
 //Lo copie del apunte de algoritmos de sorting :D
@@ -40,3 +40,5 @@ MergeMagico(out A: arreglo(nat), in B,C: arreglo(nat)) → res: nat
 	return res
 
 Es el mismo algoritmo que merge sort, O(nlogn)
+
+T(n) = 2T(n/2) + n ∈ O(nlogn)

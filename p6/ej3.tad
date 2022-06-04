@@ -12,7 +12,7 @@ else
 	m ← b mod 2
 	if b > 0 then
 		e ← elevar(a, b/2)
-		res ← e * e * m
+		res ← e² * 2ᵐ
 	else:
 		res ← 1
 	fi
@@ -27,7 +27,8 @@ elevarIT(in a: nat, in b: nat) → res: nat
 //Supongo a≠0
 m ← b mod 2
 res ← 1
-while pot < b:
+pot ← 1
+while pot < b: //probar que hace logn iteraciones
 	res ← res*res
 	pot ← pot * 2
 end while

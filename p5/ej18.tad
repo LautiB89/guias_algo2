@@ -3,6 +3,38 @@ CountingSort tiene complejidad O(n+k) donde k es el maximo de nuestros elementos
 Si el maximo es n (este caso especifico), la Complejidad queda O(n+n) = O(2n) = O(n)
 
 2.
+
+n = (n mod 10)*10⁰ + ((n div 10) mod 10)*10 + ... + ((n div 10^n) mod 10)*10^n
+
+en base 10
+
 ordenar(in/out A: arreglo(nat)) → 
-	M ← Max(A) //O(n)
-	
+	cambio de base todo el arreglo a base n //O(n*2)
+	ahora todos los elementos tienen ≤ 2 digitos
+
+	puedo hacer 2 iteraciones que ordenan segun digitos (ej radix)
+	el ordenamiento dentro del radix es el del punto 1 (CountingSort, que es estable)
+	O(n (cambio de base) + n (CountingSort) * 2 (iteraciones) ) = O(n)		
+
+O(max(digitos) * ordenamiento estable según un digito )
+
+
+3.
+
+n = (n mod 10)*10⁰ + ((n div 10) mod 10)*10 + ... + ((n div 10^n) mod 10)*10^n
+
+en base 10
+ordenar(in/out A: arreglo(nat)) → 
+	cambio de base todo el arreglo a base n
+	ahora todos los elementos tienen ≤ k digitos
+
+	puedo hacer k iteraciones que ordenan segun digitos (ej radix)
+	el ordenamiento dentro del radix es el del punto 1 (CountingSort, que es estable)
+	O(nk(cambio de base) + n (CountingSort) * k (iteraciones) ) = O(nk)		
+
+O(max(digitos) * ordenamiento estable según un digito )
+
+4.
+Tenemos una precondicion extra:
+	sabemos cual es el maximo de A
+La complejidad queda como: O(n*logₙ(Max(A)))

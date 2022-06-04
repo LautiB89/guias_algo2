@@ -3,8 +3,12 @@ computa la matriz Aⁿ .
 Dada una matriz cuadrada A de orden 4 × 4 y un número natural n que es potencia de 2
 (i.e., n = 2 k para algun k ≥ 1), desarrollar, utilizando la técnica de dividir y conquistar y 
 el método potencia, un algoritmo que permita calcular
-A¹ + A² + A⁴ + A⁸ . . . + Aⁿ .
+A¹ + A² + A³ + A⁴ . . . + Aⁿ .
 Calcule el número de veces que el algoritmo propuesto aplica el método potencia. 
 Si no es estrictamente menor que O(n), resuelva el ejercicio nuevamente.
 
 ∑Aⁱ	= 
+A + A² + A³ + //O(n)
+A + A * (A + A²+ A³ + ... + A^{n-1})
+
+O(1)

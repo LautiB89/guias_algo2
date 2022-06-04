@@ -1,8 +1,7 @@
-####SIN COMPLETAR###############################
 Quiero ordenar en O(nl) donde l es la longitud maxima de c/u
 La comparacion de dos strings[l] toma O(l).
 
-Hago un diccTrie vacio que va a guardar <string, lista(nat)>
+Hago un diccTrie vacio que va a guardar <string, lista(tupla(string, nat))>
 Inserto todas las tuplas del arreglo:
 	n elementos → insercion cuesta n*O(l) = O(nl)
 
@@ -27,9 +26,14 @@ ordenar(in A: arreglo())
 		endif
 	endfor //O(nl)
 
-	Si pudiese hacer un inorder sería un golazo
-	Solo quedaría recorrer toda la lista y linkear todo
+	repito hasta tener un trie vacio:
+		agarro el minimo del trie //O(l)
+		lo concateno con mi lista resultado //O(1)
+		borro el elemento minimo //O(l)
+		asi hasta tener el trie vacio
 
+2.
+Hago el counting en vez del merge, O(nl + n) = O(nl)
 
 
 

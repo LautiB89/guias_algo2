@@ -3,13 +3,25 @@ Un cjto de nats tiene un agujero si existe un natural x tq:
 	el cjto tiene algun elto mayor y alguno menor que x
 
 
-
-
 tieneAgujero?(in A: arreglo(nat)) → bool
 //Por la consigna parece que tamaño(A) ≥ 2
 	n ← tamaño(A)
 	m ← Min(A)
 	arreglo(nat) C ← CrearArreglo(tam(A)) //O(n)
 
+	res ← true
+	for i ← 0 to n-1:
+		if 0 ≤ A[i]-min < n then:
+			C[A[i]-min] ← C[A[i]-min]+1
+		else
+			res ← false
+	endfor
 
+	nat sum ← 0, c ← 0 
 
+	while iC ≤ tam(C) ∧ sum < n ∧ res:
+		res ← res ∧ (C[iC] > 0)
+		sum ← sum + C[iC]
+	end while
+
+	return res

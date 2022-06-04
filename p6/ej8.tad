@@ -37,19 +37,20 @@ posFalse(in A: arreglo(arreglo(nat))) → res: tupla(i: nat, j: nat)
 
 	res.j ← lo
 	return res
+	//O(logn)
 
 2.
 contarFalse(in A: matriz(nat)) → res: nat
 	res ← 0
 	for k ← 1 to 5: //Itero 5 veces
 		if ¬conjSubmat(0, tam(A)-1, 0, tam(A[0])-1) then //Si hay al menos un false //O(1)
-			tupla(i: nat, j: nat): pos ← posFalse(A) //O(n) con n la cantidad de elementos de la matriz
+			tupla(i: nat, j: nat): pos ← posFalse(A) //O(logn) con n la cantidad de elementos de la matriz
 			res ← res + 1 //O(1)
 			A[posᵢ][posⱼ] = true //O(1)
 		fi
-	endfor
+	endfor //O(5*logn)=O(logn)
 
 3.
-El algoritmo quedó con complejidad de peor caso O(5n) = O(n)
+El algoritmo quedó con complejidad de peor caso O(5*logn) = O(n)
  
 

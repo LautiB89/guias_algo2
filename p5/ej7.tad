@@ -1,16 +1,16 @@
 ordenarAVL(in/out A: arreglo(nat))
-	ab: AVL⟨nat, nat⟩= CrearArbolAVL()
+	ab: diccAVL⟨nat,nat⟩ = CrearArbolAVL()
 	para i = 0..tamaño(A):
-		si pertenece(A[i], ab):
-			actualizo la cantidad en la tupla O(log n)
-		sino
-			inserto la tupla ordenando segun primer valor O(log n)
+		si definido(A[i], ab): //O(logd)
+			e ← obtener(A[i], ab)
+			definir(A[i], e.reps + 1, ab)
+		si no
+			definir(A[i], 1, ab)
 		fin si
-	fin para //hago n iteraciones ⟹ O(n*log n) 
 
-	A ← Inorder(ab) //O(n)
-
-
-
+	fin para //hago n iteraciones ⟹ O(n*log d) 
 	
-
+	d = #Claves(ab)
+	d veces
+		minimo de claves //O(log d)
+		borrar minimo //O(log d)
