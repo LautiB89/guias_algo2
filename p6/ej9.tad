@@ -1,0 +1,22 @@
+Dados dos arreglos de naturales, ambos ordenados de manera creciente, se desea buscar, dada una posición i,
+el i-ésimo elemento de la unión de ambos. Dicho de otra forma, el i-ésimo del resultado de hacer merge ordenado
+entre ambos arreglos. Notar que no es necesario hacer el merge completo. Se puede asumir que cada natural
+aparece a lo sumo en uno de los arreglos, y a lo sumo una vez.
+
+Los arreglos no comparten elementos, y no tienen repetidos
+
+1.
+iesimoMerge(in A: arreglo(nat), in B: arreglo(nat), in i: nat) → nat
+
+
+
+puedo hacer el merge de ambos de una
+eso tomaria O(n+m) que no es O(log²(n+m))
+
+Dividir en subarreglos por la mitad hasta que sean de 1 elemento cuesta O(log(n))
+
+[1,2,3,4,6,7,8,9]
+ 1 2 3 4 5 6 7 8
+
+[1,2,6,9] [3,4,7,8]
+1
