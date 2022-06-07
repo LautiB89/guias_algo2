@@ -1,0 +1,32 @@
+1.
+A: arreglo(conj(nat)), A[1..N]
+#(A[i]) ≤ K, ∀i, 1≤i≤N
+Ordenar A para obtener un B tq: B[i] ⊆ B[j] ⟹ i ≤ j
+
+ordenar(in/out A: arreglo(conjunto(α)))
+
+	arreglo(lista(conjunto(nat))) C ← CrearArreglo(K+1) //C[1...K+1]
+		//Arreglo con listas enlazadas vacias.
+
+	for c in A: 						// n veces
+		AgregarAtras(A[cardinal(c)], c) // O(K)
+	end for 							// Finalmente: O(nk)
+
+	res ← listaVacia(conj) 		// O(1)
+	for i ← 1 to K+1: 			// k+1 veces
+		concatenar(res, C[i]) 	// O(1) solo es "unir" los punteros
+	end for 					// Finalmente: O(K)
+
+	A ← ListaAArreglo(res) //O(n)
+
+//Complejidad final
+//O(n + k + nk) = O(nk)
+
+2.
+Sabemos que si ∀i,j C[i]∩C[j] = ∅ ⟹ 
+	#⋃(C[i]) = ∑#(C[i]) para 1≤i≤N
+
+### FALTA implementar
+
+
+

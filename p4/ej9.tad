@@ -1,0 +1,57 @@
+### COMPLETAR
+1.
+Ag tiene que costar O(1)
+	si el elemento es <min o >max //hasta aca pensamos en una lista enlazada ordenada
+   	si no cuesta O(n)
+
+∪ y ∩ tienen que tomar O(1)
+	si c/elto de uno de los conjuntos es <max del otro 
+	si no cuesta O(n+m)
+
+
+representación:
+	cjto se representa con listaLLOrdenada(α)
+
+Voy a implementar los algoritmos necesarios para que la representacion de este
+conjunto sea con una lista (doblemente enlazada) y modificar los algoritmos necesarios para que
+esté siempre ordenada.
+
+representación:
+	conjunto se representa con lista(α)
+
+Ag(in/out A:lista(α), a: α)
+	if a < Primero(A) then
+		AgregarAdelante(A, a)
+	else if a > Ultimo(A) then
+		AgregarAtras(A, a)
+	else
+		it ← CrearIt(A)
+		while HaySiguiente(it) ∧ a < Siguiente(it):
+			Avanzar(it)
+		end while
+		//a esa altura tengo que a ≥ Siguiente(it)
+
+		if a > Siguiente(it) then
+			Avanzar(it)
+			AgregarComoSiguiente(it, a)
+		fi
+	fi
+
+falta hacer ∪ y ∩ pero las ideas son :
+para la union, 
+	si el ultimo elemento de una lista es menor al primero de la otra, concatenamos
+	si no, mergeamos
+para la interseccion
+	si el ultimo elemento de una lista es menor al primero de la otra, devolvemos la lista vacia
+	si no, mergeamos (pero solo ponemos elementos cuando nos coincide en el merge)
+
+Aliasing: 
+Si es O(1), si o si hay Aliasing (concatenamos las listas).
+Si es O(n+m), podriamos generar la lista por copia de cada valor, pero decidimos 
+	generarla de forma tal que mantengamos los aspectos de Aliasing de la guarda anterior, 
+	reapuntando los punteros de las listas originales para conectarlas entre si mergeandolas.
+
+
+2.
+α debe ser un tipo con la operacion > definida.
+(debe ser un tipo comparable)

@@ -1,0 +1,19 @@
+### COMPLETAR
+representación:
+	relacion se representa con estr, donde
+		estr es tupla⟨
+			prop: tipo
+		⟩
+
+probar diccionarios hash, tries, avls
+
+otra solucion interesante para los casos acotados es usar
+una matriz de adyacencia
+
+Si solamente la relacion aRb está registrada quedaría:
+  a b c d
+a 0 1 0 0
+b 0 0 0 0
+c 0 0 0 0
+d 0 0 0 0 
+Entonces podemos ver en O(1) si una relacion está registrada haciendo M[a][b]
