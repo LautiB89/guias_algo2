@@ -7,7 +7,11 @@ Los elementos no ordenados de A se colocan en la mitad derecha A[n/2+1...n].
 ordenar(in/out A:arreglo(nat))
 	n ← tamaño(A) //O(n)
 
-	if n > 2 then
+	if n = 2 then
+		if A[0] > A[1] then
+			swap(A[0], A[1])
+		fi
+	else if n > 2 then
 		casiSort(A) //Θ(n)
 		B ← Copiar(Subarreglo(n/2+1,n)) //O(n/2)
 		ordenar(B) //T(n/2)
