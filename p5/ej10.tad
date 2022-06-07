@@ -1,4 +1,3 @@
-
 casiSort: 
 Dado un arreglo A[1...n] de n elementos, 
 ordena n/2 elementos arbitrarios poniendolos a la mitad izq del arreglo A[1...n/2]. 
